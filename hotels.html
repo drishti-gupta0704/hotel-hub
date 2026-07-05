@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels | HotelHub</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/hotels.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                <i class="fa-solid fa-hotel"></i>
+                <span>HotelHub</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="#">Favorites</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <section class="hotel-header">
+
+        <h1>Explore Hotels</h1>
+
+        <p>Find the perfect hotel for your next vacation.</p>
+
+    </section>
+
+    <section class="controls">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search hotel..."
+        >
+
+        <select id="sortSelect">
+            <option value="">Sort By</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+            <option value="rating">Highest Rating</option>
+        </select>
+
+    </section>
+
+    <div id="loader" class="loader">
+        Loading hotels...
+    </div>
+
+    <section id="hotelContainer" class="hotel-container">
+
+    </section>
+
+    <footer>
+        <p>© 2026 HotelHub. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/hotels.js"></script>
+
+</body>
+
+</html>
