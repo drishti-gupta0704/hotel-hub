@@ -11,19 +11,27 @@ async function loadHotels() {
 
     loader.style.display = "block";
 
-    hotels = await fetchHotels();
-
-    filteredHotels = [...hotels.data];
+    const response = await fetchHotels();
 
     loader.style.display = "none";
 
-    displayHotels(filteredHotels);
+    if (!response || !response.data) {
+
+        hotelContainer.innerHTML = "<h2>Unable to load hotels.</h2>";
+
+        return;
+
+    }
+
+    hotels = response.data;
+
+    filteredHotels = [...hotels];
+
+    displayHotels(filteredHotels.slice(0, 24));
 
 }
 
 function displayHotels(hotelList) {
-
-    hotelContainer.innerHTML = "";
 
     if (hotelList.length === 0) {
 
@@ -33,13 +41,18 @@ function displayHotels(hotelList) {
 
     }
 
+    let cards = "";
+
     hotelList.forEach(hotel => {
 
-        hotelContainer.innerHTML += `
-
+        cards += `
         <div class="hotel-card">
 
-            <img src="${hotel.thumbnail}" alt="${hotel.name}">
+            <img
+                src="${hotel.thumbnail}"
+                alt="${hotel.name}"
+                loading="lazy"
+            >
 
             <div class="hotel-info">
 
@@ -55,7 +68,7 @@ function displayHotels(hotelList) {
                 </p>
 
                 <p class="hotel-price">
-                    ₹${Number(hotel.price).toLocaleString()}
+                    ₹${Number(hotel.price).toLocaleString("en-IN")}
                 </p>
 
                 <a href="details.html?id=${hotel.id}" class="btn">
@@ -65,18 +78,19 @@ function displayHotels(hotelList) {
             </div>
 
         </div>
-
         `;
 
     });
+
+    hotelContainer.innerHTML = cards;
 
 }
 
 searchInput.addEventListener("input", () => {
 
-    const value = searchInput.value.toLowerCase();
+    const value = searchInput.value.trim().toLowerCase();
 
-    filteredHotels = hotels.data.filter(hotel =>
+    filteredHotels = hotels.filter(hotel =>
 
         hotel.name.toLowerCase().includes(value) ||
 
@@ -84,31 +98,33 @@ searchInput.addEventListener("input", () => {
 
     );
 
-    displayHotels(filteredHotels);
+    displayHotels(filteredHotels.slice(0, 24));
 
 });
 
 sortSelect.addEventListener("change", () => {
 
-    if (sortSelect.value === "low-high") {
+    const value = sortSelect.value;
+
+    if (value === "low-high") {
 
         filteredHotels.sort((a, b) => Number(a.price) - Number(b.price));
 
     }
 
-    else if (sortSelect.value === "high-low") {
+    else if (value === "high-low") {
 
         filteredHotels.sort((a, b) => Number(b.price) - Number(a.price));
 
     }
 
-    else if (sortSelect.value === "rating") {
+    else if (value === "rating") {
 
         filteredHotels.sort((a, b) => b.rating - a.rating);
 
     }
 
-    displayHotels(filteredHotels);
+    displayHotels(filteredHotels.slice(0, 24));
 
 });
 
