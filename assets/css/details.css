@@ -1,0 +1,118 @@
+
+.details-container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.main-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.hotel-content{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.hotel-left{
+    flex: 2;
+    min-width: 320px;
+}
+
+.hotel-right{
+    flex: 1;
+    min-width: 280px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    height: fit-content;
+}
+
+.hotel-title{
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    color: #1f2937;
+}
+
+.location{
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.rating{
+    font-size: 1.1rem;
+    color: #f59e0b;
+    margin-bottom: 20px;
+}
+
+.description{
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.price{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 20px;
+}
+
+.book-btn{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book-btn:hover{
+    background: #1d4ed8;
+}
+
+.gallery{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.gallery img{
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.gallery img:hover{
+    transform: scale(1.05);
+}
+
+@media(max-width:768px){
+
+    .main-image{
+        height: 300px;
+    }
+
+    .hotel-title{
+        font-size: 1.8rem;
+    }
+
+    .hotel-content{
+        flex-direction: column;
+    }
+
+}
