@@ -3,7 +3,7 @@
 
 ## HotelHub is a modern, responsive hotel listing web application built using HTML, CSS, and JavaScript. It integrates with a REST API to display hotel information dynamically, allowing users to browse, search, sort, and view detailed information about hotels.
 
-##  Live Demo
+### Live Demo
 🔗 [View Live Project](https://hotel-hubs.netlify.app/)
 
 ###  Features
